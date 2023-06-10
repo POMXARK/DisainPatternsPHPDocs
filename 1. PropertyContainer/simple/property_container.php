@@ -2,14 +2,20 @@
 
 // Объявим интерфейс PropertyContainerInterface
 
+// CRUD
 interface PropertyContainerInterface
 {
+    // Create
     function setProperty($propertyName, $value);
 
-    function updateTitle($propertyName, $value);
-
+    // Read
     function getProperty($propertyName);
 
+    // Update
+    function updateProperty($propertyName, $value);
+
+
+    // Delete
     function deleteProperty($propertyName);
 }
 
@@ -19,12 +25,12 @@ class PropertyContainer implements PropertyContainerInterface
 {
     private $propertyContainer = [];
 
-    function setProperty($propertyName, $value)
+    function setProperty($propertyName, $value = null)
     {
         $this->propertyContainer[$propertyName] = $value;
     }
 
-    function updateTitle($propertyName, $value)
+    function updateProperty($propertyName, $value)
     {
         if (!isset($this->propertyContainer[$propertyName])) {
             throw new Exception("property {$propertyName} not found");
@@ -66,7 +72,11 @@ $post->setTitle('Hello');
 
 // присваиваем динамическое свойство объекту
 $post->setProperty('view_count', 100);
-$post->updateTitle('view_count', 200);
+try {
+    $post->updateProperty('view_count', 200);
+} catch (Exception $e) {
+    echo $e;
+}
 
 print_r('view_count: ' . $post->getProperty('view_count'));
 echo "\n\n";
