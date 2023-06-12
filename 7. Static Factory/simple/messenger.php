@@ -137,9 +137,9 @@ class AppMessenger implements MessengerInterface
     }
 }
 
-class MessengerSimpleFactory
+class MessengerStaticFactory
 {
-    public function build($type): MessengerInterface
+    public static function build($type): MessengerInterface
     {
         switch ($type) {
             case 'email':
@@ -164,8 +164,8 @@ class MessengerSimpleFactory
     }
 }
 
-$factory = new MessengerSimpleFactory();
+$factory = new MessengerStaticFactory();
 
-print_r($factory->build('email'));
-print_r($factory->build('sms'));
+print_r($factory::build('email'));
+print_r($factory::build('sms'));
 
