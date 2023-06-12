@@ -2,9 +2,9 @@
 
 namespace advanced;
 
-trait SingletonTrait
+trait MultitonTrait
 {
-    private static $instance = null;
+    private static $instances = [];
 
     /**
      * Запрещаем прямое создание
@@ -30,20 +30,30 @@ trait SingletonTrait
         //
     }
 
-    static public function getInstance()
+    static public function getInstance(string $instanceName)
     {
+        if(isset(static::$instances[$instanceName])) {
+            return static::$instances[$instanceName];
+        }
+
+        static::$instances[$instanceName] = new static();
+
         return static::$instance ?? (static::$instance = new static());
     }
 
 }
 
 
-class AdvancedSingleton
+class AdvancedMultiton
 {
     use MultitonTrait;
     private static $instance;
 
 }
 
-print_r(AdvancedSingleton::getInstance());
-print_r(AdvancedSingleton::getInstance());
+print_r(AdvancedMultiton::getInstance('mysql'));
+print_r(AdvancedMultiton::getInstance('mongo'));
+
+
+print_r(AdvancedMultiton::getInstance('mysql'));
+print_r(AdvancedMultiton::getInstance('mongo'));
