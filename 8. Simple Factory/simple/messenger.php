@@ -36,6 +36,10 @@ interface MessengerInterface
     public function send(): bool;
 }
 
+
+/*
+ * шаблон строитель
+ */
 abstract class AbstractMessenger implements MessengerInterface
 {
     protected $sender;
@@ -72,6 +76,7 @@ class EmailMessenger extends AbstractMessenger
     }
 }
 
+
 class SmsMessenger extends AbstractMessenger
 {
     public function send(): bool
@@ -82,6 +87,9 @@ class SmsMessenger extends AbstractMessenger
     }
 }
 
+/*
+ * шаблон строитель
+ */
 class AppMessenger implements MessengerInterface
 {
     private $messenger;
@@ -137,6 +145,9 @@ class AppMessenger implements MessengerInterface
     }
 }
 
+/*
+ * шаблон строитель и простая фабрика
+ */
 class MessengerSimpleFactory
 {
     public function build($type): MessengerInterface
