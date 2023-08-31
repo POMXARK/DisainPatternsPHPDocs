@@ -17,6 +17,9 @@ interface GuiFactoryInterface
     public function buildCheckBox(): CheckBoxInterface;
 }
 
+/**
+ * шаблон фабричный метод
+ */
 interface FormInterface
 {
     public function render();
@@ -24,6 +27,9 @@ interface FormInterface
     function createGuiKit(): GuiFactoryInterface;
 }
 
+/**
+ * шаблон фабричный метод
+ */
 abstract class AbstractForm implements FormInterface
 {
     /**

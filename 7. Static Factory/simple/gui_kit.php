@@ -32,6 +32,9 @@ class CheckBoxBootstrap implements CheckBoxInterface
     }
 }
 
+/**
+ * шаблон статическая фабрика
+ */
 class BootstrapFactory
 {
     public static function build(string $type): ButtonBootstrap|CheckBoxBootstrap|int
@@ -60,6 +63,9 @@ class CheckBoxSemanticUi implements CheckBoxInterface
     }
 }
 
+/**
+ * шаблон статическая фабрика
+ */
 class SemanticUiFactory
 {
     public static function build(string $type): ButtonSemanticUi|CheckBoxSemanticUi|int
@@ -72,6 +78,9 @@ class SemanticUiFactory
     }
 }
 
+/**
+ * шаблон простая фабрика
+ */
 class GuiKitFactory
 {
     /**
@@ -79,16 +88,11 @@ class GuiKitFactory
      */
     public function getFactory($type)
     {
-        switch ($type) {
-            case 'bootstrap':
-                $factory = new BootstrapFactory();
-                break;
-            case 'semanticui':
-                $factory = new SemanticUiFactory();
-                break;
-            default:
-                throw new \Exception("Неизвестный тип фабрики [{$type}]");
-        }
+        $factory = match ($type) {
+            'bootstrap' => new BootstrapFactory(),
+            'semanticui' => new SemanticUiFactory(),
+            default => throw new \Exception("Неизвестный тип фабрики [{$type}]"),
+        };
 
         return $factory;
     }

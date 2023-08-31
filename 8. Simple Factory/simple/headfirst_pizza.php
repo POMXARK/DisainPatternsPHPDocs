@@ -96,6 +96,9 @@ class VeggiePizza extends Pizza
     }
 }
 
+/**
+ * шаблон простая фабрика
+ */
 class SimplePizzaFactory {
 
     public function createPizza(string $type)

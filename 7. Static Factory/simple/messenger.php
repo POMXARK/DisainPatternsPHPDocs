@@ -144,7 +144,7 @@ class AppMessenger implements MessengerInterface
 }
 
 /*
- * шаблон фабрика
+ * шаблон статическая фабрика и строитель
  */
 class MessengerStaticFactory
 {

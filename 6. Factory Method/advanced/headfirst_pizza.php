@@ -224,7 +224,8 @@ abstract class PizzaStore
 {
     abstract function createPizza(string $item);
 
-	public function orderPizza(string $type) {
+	public function orderPizza(string $type)
+    {
         $pizza = $this->createPizza($type);
         echo "--- Making a " . $pizza->getName() . " --- \n";
 

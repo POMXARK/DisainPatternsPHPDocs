@@ -116,6 +116,9 @@ abstract class Duck
 	}
 }
 
+/**
+ * реализация шаблона фасад
+ */
 class DecoyDuck extends Duck
 {
     public function __construct()
@@ -130,6 +133,9 @@ class DecoyDuck extends Duck
     }
 }
 
+/**
+ * реализация шаблона фасад
+ */
 class MallardDuck extends Duck
 {
     public function __construct()
@@ -144,6 +150,9 @@ class MallardDuck extends Duck
     }
 }
 
+/**
+ * реализация шаблона фасад
+ */
 class ModelDuck extends Duck
 {
     public function __construct()
@@ -158,6 +167,9 @@ class ModelDuck extends Duck
     }
 }
 
+/**
+ * реализация шаблона фасад
+ */
 class RedHeadDuck extends Duck
 {
     /**
