@@ -103,7 +103,8 @@ class GuiTheme
 {
     private $guiKit;
 
-    public function __construct(string $guiKit) {
+    public function __construct(string $guiKit)
+    {
         $this->guiKit = (new GuiKitFactory())->getFactory($guiKit);
 
         $result[] = $this->guiKit->buildButton()->draw();
